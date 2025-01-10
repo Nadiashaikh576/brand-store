@@ -2,8 +2,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FiShoppingCart, FiUser, FiMenu, FiX, FiSearch } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+
+  const item = useSelector((state: RootState) => state.cart);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -16,7 +21,7 @@ const Navbar = () => {
           {isMenuOpen ? <FiX /> : <FiMenu />}
         </button>
 
-        <div className="font-bold text-xl tracking-wide text-gray-600">SynthiStore.pk</div>
+        <div className="font-bold text-xl tracking-wide text-white">SynthiStore.pk</div>
       </div>
       <ul
         className={`${
@@ -25,13 +30,13 @@ const Navbar = () => {
             : "hidden"
         } md:flex md:static md:w-auto space-y-2 md:space-y-0 md:space-x-8 text-base font-medium`}
       >
-       <Link href="/"> <li className="px-4 py-2 md:p-0 text-center md:text-left hover:text-gray-600">
+       <Link href="/"> <li className="px-4 py-2 md:p-0 text-center md:text-left text-white hover:text-gray-600">
           Home
         </li> </Link>
-        <Link href="/products"><li className="px-4 py-2 md:p-0 text-center md:text-left hover:text-gray-600">
-          Products
+        <Link href="/about"><li className="px-4 py-2 md:p-0 text-center md:text-left text-white hover:text-gray-600">
+          About
         </li> </Link>
-        <Link href="/contact"> <li className="px-4 py-2 md:p-0 text-center md:text-left hover:text-gray-600">
+        <Link href="/contact"> <li className="px-4 py-2 md:p-0 text-center md:text-left text-white hover:text-gray-600">
           Contact
         </li> </Link>
       </ul>
@@ -45,11 +50,14 @@ const Navbar = () => {
             className="bg-transparent focus:outline-none text-sm placeholder-gray-500"
           />
         </div>
-        <FiShoppingCart className="text-2xl cursor-pointer  hover:text-gray-600" />
-        <FiUser className="text-2xl cursor-pointer  hover:text-gray-600" />
+
+        <Link href="/cart"><FiShoppingCart className="text-2xl cursor-pointer mr-2 text-white hover:text-gray-600" /></Link>
+       <div className="text-white"> {item.length}</div>
+        <FiUser className="text-2xl cursor-pointer text-white hover:text-gray-600" />
       </div>
     </nav>
   );
 };
 
 export default Navbar;
+
