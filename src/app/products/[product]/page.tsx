@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default async function Prodects({params}:{params:{product:string}}) {
+export default async function Products({params}:{params:{product:string}}) {
     const data = await fetch(`https://fakestoreapi.com/products/${params.product}`)
     const res = await data.json()
     console.log(res)

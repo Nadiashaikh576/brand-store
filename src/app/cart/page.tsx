@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { remove } from "../redux/cartslice";
+import { remove } from "../redux/Cartslice";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store"; // Replace with the actual path to your store's RootState type
+import { RootState } from "../redux/Store"; // Replace with the actual path to your store's RootState type
 import Image from "next/image";
 
 interface CartItem {

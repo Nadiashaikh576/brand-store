@@ -1,57 +1,39 @@
-"use client"
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { add } from "../redux/cartslice";
 
+// Define a type for the product data
 interface Product {
   id: number;
   title: string;
-  price: number;
   image: string;
+  price: number;
 }
 
-const Products: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const dispatch = useDispatch();
-
-  const getProducts = async () => {
-    const data = await fetch("https://fakestoreapi.com/products");
-    const res: Product[] = await data.json();
-    setProducts(res);
-  };
-
-  const handleAdd = (product: Product) => {
-    dispatch(add(product));
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
+export default async function Products() {
+  const fetchdata = await fetch("https://fakestoreapi.com/products");
+  const res: Product[] = await fetchdata.json();
 
   return (
     <>
       <div className="gap-5 grid lg:grid-cols-3 p-12">
-        {products.map((product) => (
+        {res.map((val) => (
           <div
-            key={product.id}
+            key={val.id}
             className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
           >
-            <Link href={`products/${product.id}`}>
+            <Link href={`products/${val.id}`}>
               <div>
                 <Image
                   className="p-8 rounded-t-lg w-[400px] h-[400px]"
-                  src={product.image}
-                  alt={product.title}
+                  src={val.image}
+                  alt={val.title}
                   height={200}
                   width={200}
                 />
               </div>
               <div className="px-5 pb-5">
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                  {product.title}
+                  {val.title}
                 </h5>
                 <div className="flex items-center mt-2.5 mb-5">
                   <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -83,9 +65,9 @@ const Products: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                    ${product.price}
+                    ${val.price}
                   </span>
-                  <button onClick={()=>handleAdd(product)} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Add to cart
                   </button>
                 </div>
@@ -97,5 +79,3 @@ const Products: React.FC = () => {
     </>
   );
 }
-
-export default Products;

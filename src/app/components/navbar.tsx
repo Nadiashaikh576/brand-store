@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { FiShoppingCart, FiUser, FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { RootState } from "../redux/Store";
 
 const Navbar: React.FC = () => {
 
@@ -33,7 +33,10 @@ const Navbar: React.FC = () => {
        <Link href="/"> <li className="px-4 py-2 md:p-0 text-center md:text-left text-white hover:text-gray-600">
           Home
         </li> </Link>
-        <Link href="/about"><li className="px-4 py-2 md:p-0 text-center md:text-left text-white hover:text-gray-600">
+        <Link href="/products"><li className="px-4 py-2 md:p-0 text-center md:text-left text-white hover:text-gray-600">
+          Products
+        </li> </Link>
+        <Link href="/about"> <li className="px-4 py-2 md:p-0 text-center md:text-left text-white hover:text-gray-600">
           About
         </li> </Link>
         <Link href="/contact"> <li className="px-4 py-2 md:p-0 text-center md:text-left text-white hover:text-gray-600">

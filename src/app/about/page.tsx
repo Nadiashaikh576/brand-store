@@ -30,7 +30,7 @@ const About = () => {
         {/* Animation */}
         <div className='mt-10'>
           <h4 className='text-2xl text-[#2A254B] font-bold mb-4'>
-            Let's Connect and Create Amazing Things Together!
+            Let&apos;s Connect and Create Amazing Things Together!
           </h4>
           <p className='text-lg text-gray-700'>
           Have a project idea or just want to say hello? Feel free to reach out — I&apos;d love to collaborate and create something amazing with you!
