@@ -6,11 +6,11 @@ const About = () => {
       <div className='max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8'>
         {/* Profile Section */}
         <div className='flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6'>
-          <img 
+          {/* <img 
             src="/images/dp.jpeg" 
             alt="Author Images"
             className='w-32 h-32 rounded-full object-cover border-4 border-[#2A254B] transform transition duration-500 hover:scale-110' 
-          />
+          /> */}
           <div>
             <h3 className='text-3xl font-extrabold text-[#2A254B]'>
               Nadia Shaikh
